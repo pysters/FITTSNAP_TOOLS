@@ -1,8 +1,9 @@
 import re
 import inflect
 
-from settings import (UNIT_FEET, WEIGHT_UNITS, HEIGHT_UNITS, GENDERS, AGE_LIMIT,
-                      ACCEPTED_GENDERS, ACCEPTED_WEIGHT_UNITS, ACCEPTED_HEIGHT_UNITS)
+from bmi_calculator.settings import (UNIT_FEET, WEIGHT_UNITS, HEIGHT_UNITS, GENDERS,
+                                     AGE_LIMIT, ACCEPTED_GENDERS, ACCEPTED_WEIGHT_UNITS,
+                                     ACCEPTED_HEIGHT_UNITS)
 
 NUMBER_ONLY_INPUT = 'NUMBER_ONLY_INPUT'
 NUMBER_WITH_SPACE_DOT_INPUT = 'NUMBER_WITH_SPACE_DOT_INPUT'

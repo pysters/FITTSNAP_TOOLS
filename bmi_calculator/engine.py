@@ -1,7 +1,7 @@
 import os
 
-from bmi_calculator import Bmi, BmiCategory
-from utils import UserInput
+from bmi_calculator.calculator import Bmi, BmiCategory
+from bmi_calculator.utils import UserInput
 
 REQUIRED_PARAMS = set(['age', 'gender', 'height',
                        'height_unit', 'weight', 'weight_unit'])

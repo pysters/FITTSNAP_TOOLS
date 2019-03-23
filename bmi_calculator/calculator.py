@@ -1,9 +1,7 @@
-from utils import UnitConverter
-from settings import (GENDER_FEMALE, GENDER_MALE,
-                      UNIT_FEET, UNIT_METER, UNIT_CENTIMETER,
-                      UNIT_KILOGRAM, UNIT_POUND,
-                      BODY_FAT_PERCENTAGE_CHART,
-                      BMI_CHART)
+from bmi_calculator.utils import UnitConverter
+from bmi_calculator.settings import (GENDER_FEMALE, GENDER_MALE, UNIT_FEET, UNIT_METER,
+                                     UNIT_CENTIMETER, UNIT_KILOGRAM, UNIT_POUND,
+                                     BODY_FAT_PERCENTAGE_CHART, BMI_CHART)
 
 
 class BmiCategory:

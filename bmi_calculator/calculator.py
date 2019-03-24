@@ -32,11 +32,14 @@ class BmiCategory:
         if get_body_fat_percentage_chart:
             if bfp > get_body_fat_percentage_chart[0]:
                 return "Obese"
-            elif get_body_fat_percentage_chart[1][0] <= bfp <= get_body_fat_percentage_chart[1][1]:
+            elif (get_body_fat_percentage_chart[1][0] <=
+                  bfp <= get_body_fat_percentage_chart[1][1]):
                 return "Acceptable"
-            elif get_body_fat_percentage_chart[2][0] <= bfp <= get_body_fat_percentage_chart[2][1]:
+            elif (get_body_fat_percentage_chart[2][0] <= bfp
+                  <= get_body_fat_percentage_chart[2][1]):
                 return "Fitness"
-            elif get_body_fat_percentage_chart[3][0] <= bfp <= get_body_fat_percentage_chart[3][1]:
+            elif (get_body_fat_percentage_chart[3][0] <=
+                  bfp <= get_body_fat_percentage_chart[3][1]):
                 return "Athletes"
             else:
                 return "Essential Fat"
@@ -79,21 +82,21 @@ class Bmi:
             if len(inp) < 2:
                 inp.append('0')
 
-            height_in_inch = self.convert.feet_to_inch(float(inp[0]), float(inp[1]))
-            height_in_cm = self.convert.inch_to_cm(height_in_inch)
-            height_in_meter = self.convert.cm_to_meter(height_in_cm)
+            height_in_inch = self.convert.feet2inch(float(inp[0]), float(inp[1]))
+            height_in_cm = self.convert.inch2cm(height_in_inch)
+            height_in_meter = self.convert.cm2meter(height_in_cm)
             return height_in_meter
         elif unit == UNIT_METER[0]:
             return height
         elif unit == UNIT_CENTIMETER[0]:
-            height_in_meter = self.convert.cm_to_meter(height)
+            height_in_meter = self.convert.cm2meter(height)
             return height_in_meter
 
     def convert_to_kg(self, weight, unit):
         if unit == UNIT_KILOGRAM[0]:
             return weight
         if unit == UNIT_POUND[0]:
-            weight_in_kg = self.convert.lb_to_kg(weight)
+            weight_in_kg = self.convert.lb2kg(weight)
             return weight_in_kg
 
     def calculate_bmi(self, height, height_unit, weight, weight_unit):

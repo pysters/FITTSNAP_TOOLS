@@ -13,7 +13,8 @@ NUMERIC_WITH_SPACE_DOT_REGEX_PATTERN = r'\d*[. ]\d*$|\d*$'
 GENDER_REGEX_PATTERN = r'^[a-z]$|^[A-Z]$'
 INPUT_VALIDATORS = {
     NUMBER_ONLY_INPUT: re.compile(NUMERIC_ONLY_REGEX_PATTERN, re.UNICODE),
-    NUMBER_WITH_SPACE_DOT_INPUT: re.compile(NUMERIC_WITH_SPACE_DOT_REGEX_PATTERN, re.UNICODE),
+    NUMBER_WITH_SPACE_DOT_INPUT: re.compile(NUMERIC_WITH_SPACE_DOT_REGEX_PATTERN,
+                                            re.UNICODE),
     GENDER_INPUT: re.compile(GENDER_REGEX_PATTERN, re.UNICODE)
 }
 
@@ -36,25 +37,26 @@ USER_INPUT_TEMPLATES = {
 
 
 class UnitConverter:
+
     def __init__(self):
         pass
 
-    def feet_to_inch(self, feet, inch):
+    def feet2inch(self, feet=0, inch=0):
         return feet * 12 + inch
 
-    def cm_to_inch(self, height_in_cm):
+    def cm2inch(self, height_in_cm=0):
         return height_in_cm / 2.54
 
-    def inch_to_cm(self, height_in_inch):
+    def inch2cm(self, height_in_inch=0):
         return height_in_inch * 2.54
 
-    def cm_to_meter(self, height_in_cm):
+    def cm2meter(self, height_in_cm=0):
         return height_in_cm * 0.01
 
-    def kg_to_lb(self, kg):
+    def kg2lb(self, kg=0):
         return kg * 2.20462
 
-    def lb_to_kg(self, lb):
+    def lb2kg(self, lb=0):
         return lb / 2.20462
 
 
@@ -68,7 +70,8 @@ class UserInput:
         if not INPUT_VALIDATORS[validator].match(str(_input)):
             raise ValueError('Invalid Input: {} validation failed'.format(validator))
 
-    def _get_user_input(self, data_received=None, validator=None, label=None, display_unit=None):
+    def _get_user_input(self, data_received=None, validator=None,
+                        label=None, display_unit=None):
         if label:
             if display_unit:
                 dynamic_text = self.pluralize(
@@ -79,9 +82,9 @@ class UserInput:
             interface_text = USER_INPUT_TEMPLATES[label].get('template').format(
                 dynamic_text
             )
-            print(interface_text, flush=True)
 
         if not data_received:
+            print(interface_text, flush=True)
             data_received = input()
 
         if validator:
@@ -107,7 +110,8 @@ class UserInput:
         if age_received > AGE_LIMIT:
             return age_received
         else:
-            raise ValueError('Unsupported age category : currently supports only for adults whose age > 20')
+            raise ValueError('Unsupported age category :'
+                             ' currently supports only for adults whose age > 20')
 
     def get_height(self, height_value=None, height_unit=None):
         height_unit = self._get_user_input(data_received=height_unit,
@@ -122,7 +126,8 @@ class UserInput:
             else:
                 return float(height_value), height_unit
         else:
-            raise ValueError('Height units must be either of {}'.format(ACCEPTED_HEIGHT_UNITS))
+            raise ValueError('Height units must be either of {}'.format(
+                ACCEPTED_HEIGHT_UNITS))
 
     def get_weight(self, weight_value=None, weight_unit=None):
         weight_unit = self._get_user_input(data_received=weight_unit,
@@ -135,4 +140,5 @@ class UserInput:
                                                       display_unit=weight_unit))
             return weight_value, weight_unit
         else:
-            raise ValueError('Weight units must be either of {}'.format(ACCEPTED_WEIGHT_UNITS))
+            raise ValueError('Weight units must be either of {}'.format(
+                ACCEPTED_WEIGHT_UNITS))
